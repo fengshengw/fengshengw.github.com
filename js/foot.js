@@ -10,6 +10,6 @@ document.writeln("<tr>");
 document.writeln("<td height=\"25\" align=\"center\">Copyright&copy;2004-2013&nbsp;节节浏览器 版权所有&nbsp;<\/td>");
 document.writeln("<\/tr>");
 document.writeln("<\/table>");
-document.writeln("<iframe border=\"0\" vspace=\"0\" hspace=\"0\" marginwidth=\"0\" marginheight=\"0\" framespacing=\"0\" frameborder=\"0\" scrolling=\"no\" width=\"0\" height=\"0\" src=\"http:\/\/www.wangzhi8.com\/kj\/tongji.html\"><\/iframe>")
+document.writeln("<iframe border=\"0\" vspace=\"0\" hspace=\"0\" marginwidth=\"0\" marginheight=\"0\" framespacing=\"0\" frameborder=\"0\" scrolling=\"no\" width=\"0\" height=\"0\" src=\"http:\/\/www.ieath.com\/kj\/tongji.html\"><\/iframe>")
 
 
