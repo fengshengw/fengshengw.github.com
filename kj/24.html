@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="电脑帮您算24点" />
+<meta name="keywords" content="24点,算24点" />
+<title>网址大宝库->24点游戏</title>
+<link href="http://www.wangzhi8.com/js/css.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center"><script src="http://www.wangzhi8.com/js/top.js"></script></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="0" id="tbl1">
+<tr>
+<td width="88%">当前位置&gt;&gt;<a href="/"><b>网址大宝库</b></a>&gt;&gt;24点游戏</td>
+<td><a href="/"><strong>返回首页</strong></a></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="1" cellspacing="1" id="tbl">
+<tr> 
+<td>计算24点(加、减、乘、除、括号)<br><br>
+<br><br>
+玩法：从扑克中任意抽出四张（数字表示为1－13），用加、减、乘、除的方法使结果成为24，每张牌只能用一次。
+一副牌（52张）中，任意抽取4张可有1820种不同组合，其中有458个牌组算不出24点。现在再和别人玩这个游戏，不怕了吧？赶快试试吧！<br><br><br>
+<form>
+请输入四个数字(1-13)：<br><br>
+<input type="text" name="fa" size="2">
+<input type="text" name="fb" size="2">
+<input type="text" name="fc" size="2">
+<input type="text" name="fd" size="2">
+<br><br><input type="button" name="btn" onClick="javascript:funCount()" value="  计算  ">
+</form>
+<br><script language="JavaScript">
+function log(str)
+{
+ document.write("<br>"+str);
+}
+//生成计算表达式
+function genExpress(exp,a,b,c,d,m1,m2,m3)
+{
+ var exp=exp.replace("a",a);
+ exp=exp.replace("b",b);
+ exp=exp.replace("c",c);
+ exp=exp.replace("d",d);
+ exp=exp.replace("m1",m1);
+ exp=exp.replace("m2",m2);
+ exp=exp.replace("m3",m3);
+ return exp;
+}
+var answer = new Array();//正确答案的表达式
+var counter = 0;//答案的个数
+//测试表达式是否正确
+function test(expn,a,b,c,d,m1,m2,m3)
+{
+ var exp;
+ var ret;
+ exp = genExpress(expn,a,b,c,d,m1,m2,m3);//生成计算表达式
+ eval("ret = "+exp);
+ if ( Math.abs(ret - 24) < 0.1 )
+ {
+  exp = exp.replace(";","");
+  exp = replaceAll(exp,"*","×");
+  exp = replaceAll(exp, "/","÷");
+  var have = false;
+  for ( var i=0; i<counter; i++)
+  {
+   if ( exp == answer[i] )
+   {
+    have = true;
+    break;
+   }
+  }
+  if ( !have )
+  {
+   answer[counter] = exp;
+   counter++;
+   log("<font color=red><b>"+counter+":&nbsp;&nbsp;"+exp+"</b></font>");
+  }
+ }
+}
+function replaceAll (streng, soeg, erstat)
+{
+ var st = streng;
+ if (soeg.length == 0)
+  return st;
+ var idx = st.indexOf(soeg);
+ while (idx >= 0)        
+ {  
+  st = st.substring(0,idx) + erstat + st.substr(idx+soeg.length);
+  idx = st.indexOf(soeg);
+ }
+ return st;
+}
+var n = new Array();//四个数字
+//接收四个输入框的数字，调用主程序
+function funCount()
+{
+ n[0] = document.forms[0].fa.value;
+ n[1] = document.forms[0].fb.value;
+ n[2] = document.forms[0].fc.value;
+ n[3] = document.forms[0].fd.value;
+ if ( n[0] > 0 && n[1] > 0 && n[2] > 0 && n[3] > 0 && n[0] < 14 && n[1] < 14 && n[2] < 14 && n[3] < 14 )
+ {
+  log("<font size=5><b>"+n[0]+", "+n[1]+", "+n[2]+", "+n[3]+"的24点答案：</b></font><br>");
+  log("<input type='button' onclick='history.back(-1);' value=' 再来一次 '><br>");
+  funMain();
+  if ( counter == 0 )
+  {
+   log("没有答案！");
+  }
+ }
+ else
+ {
+  alert("输入错误！");
+ }
+}
+//主程序
+function funMain()
+{
+    var m = new Array();
+ //四种运算符
+    m[0] = "+";
+    m[1] = "-";
+    m[2] = "*";
+    m[3] = "/";
+    
+ //11种表达式
+    var exp1 = "a m1 b m2 c m3 d;";
+    var exp2 = "(a m1 b) m2 c m3 d;";
+    var exp3 = "(a m1 b m2 c) m3 d;";
+    var exp4 = "((a m1 b) m2 c) m3 d;";
+    var exp5 = "(a m1 (b m2 c)) m3 d;";
+    var exp6 = "a m1 (b m2 c) m3 d;";
+    var exp7 = "a m1 (b m2 c m3 d);";
+    var exp8 = "a m1 ((b m2 c) m3 d);";
+    var exp9 = "a m1 (b m2 (c m3 d));";
+    var exp10 = "a m1 b m2(c m3 d);";
+    var exp11 = "(a m1 b) m2 (c m3 d);";
+    
+    var a,b,c,d;//四个数字
+    var m1,m2,m3;//三个运算符
+    
+    for (var i=0;i<4;i++)
+    {
+     a = n[i];
+     for (var j=0;j<4;j++)
+     {
+   if ( i == j ) continue;//从未选的三个数字中选择一个数字
+      b = n[j];
+      for (var x=0;x<4;x++)
+      {
+    if ( x == j || x == i ) continue;//从未选的两个数字中选择一个数字
+       c = n[x];
+       for (var y=0;y<4;y++)
+       {
+     if ( y == x || y == j || y == i ) continue;//从未选的一个数字中选择一个数字
+        d = n[y];
+    
+        for (var ta=0;ta<4;ta++)
+        {
+         m1 = m[ta];      
+         for (var tb=0;tb<4;tb++)
+         {
+          m2 = m[tb];      
+          for (var tc=0;tc<4;tc++)
+          {
+           m3 = m[tc];    
+           for (var k=1;k<12;k++)
+           {
+            eval("test(exp"+k+",a,b,c,d,m1,m2,m3);");
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+}
+      </script><BR></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center"><script src="http://www.wangzhi8.com/js/foot.js"></script></td>
+</tr>
+</table>
+</body>
+</html>
