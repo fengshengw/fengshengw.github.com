@@ -4,7 +4,7 @@ document.writeln("<td height=\"2\"><\/td>");
 document.writeln("<\/tr>");
 document.writeln("<tr>");
 document.writeln("<tr>");
-document.writeln("<td height=\"25\" align=\"center\"><a href=\"http:\/\/www.ieath.com\" target=\"_blank\">关于本站<\/a> | <a href=\"http:\/\/www.ieath.com\/kj\/contact_us.html\" target=\"_blank\">联系方式<\/a> | <a href=\"http:\/\/www.ieath.com\/kj\/contact_us.html\" target=\"_blank\">新站登陆<\/a> | <a href=\"http:\/\/www.ieath.com\/kj\/contact_us.html\" target=\"_blank\">友情链接<\/a> | <a href=\"\/\">返回首页<\/a><\/td>");
+document.writeln("<td height=\"25\" align=\"center\"><a href=\"http:\/\/www.ieath.com\" target=\"_blank\">关于本站<\/a> | <a href=\"http:\/\/www.ieath.com\/kj\/contact.html\" target=\"_blank\">联系方式<\/a> | <a href=\"http:\/\/www.ieath.com\/kj\/contact.html\" target=\"_blank\">新站登陆<\/a> | <a href=\"http:\/\/www.ieath.com\/kj\/contact.html\" target=\"_blank\">友情链接<\/a> | <a href=\"\/\">返回首页<\/a><\/td>");
 document.writeln("<\/tr>");
 document.writeln("<tr>");
 document.writeln("<td height=\"25\" align=\"center\">Copyright&copy;2004-2013&nbsp;节节浏览器 版权所有&nbsp;<\/td>");
